@@ -31,6 +31,7 @@ public class LowercaseSentenceTokenizer implements Tokenizer {
    */
   public List<String> tokenize(Scanner scanner) {
     // TODO: Implement this function to convert the scanner's input to a list of words and periods
+    
     String line = scanner.nextLine();
     List<String> tokens = new ArrayList<>();
     String wordBuild = "";
@@ -53,7 +54,6 @@ public class LowercaseSentenceTokenizer implements Tokenizer {
             
             case ' ':
                 tokens.add(wordBuild);
-                tokens.add(charToken+"");
                 wordBuild = "";
                 break;
             default:
@@ -61,6 +61,8 @@ public class LowercaseSentenceTokenizer implements Tokenizer {
                 break;
         }
     }
+    tokens.add(wordBuild);
+    System.out.println(tokens);
     return tokens;
   }
 }
