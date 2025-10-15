@@ -40,28 +40,43 @@ public class LowercaseSentenceTokenizer implements Tokenizer {
         char charToken = Character.toLowerCase(line.charAt(i));
         switch (charToken) {
             case '.':
+                //detects if at end of array.
                 if (i+1 >= line.length()) {
                     tokens.add(wordBuild);
                     tokens.add(charToken+"");
                     wordBuild = "";
                     break;
                 }else{
+                //if its not, is the next character a space?
                     if(line.charAt(i+1) != ' '){
+                        //if not, add the period to the build and carry on.
                         wordBuild += charToken;
+                        break;
+                    }else{
+                        //if so, add the word, dump it and add the token.
+                        tokens.add(wordBuild);
+                        wordBuild = "";
+                        tokens.add((""+charToken));
                         break;
                     }
                 }
             
             case ' ':
-                tokens.add(wordBuild);
-                wordBuild = "";
-                break;
+                if(!wordBuild.isBlank()){
+                    tokens.add(wordBuild);
+                    wordBuild = "";
+                    break;
+                }else{
+                    break;
+                }
             default:
                 wordBuild += charToken;
                 break;
         }
     }
-    tokens.add(wordBuild);
+    if (!wordBuild.isEmpty()) {
+      tokens.add(wordBuild);
+    }
     System.out.println(tokens);
     return tokens;
   }
