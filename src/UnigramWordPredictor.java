@@ -4,6 +4,7 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import java.util.Queue;
+import java.util.Random;
 import java.util.Scanner;
 
 /**
@@ -136,7 +137,12 @@ public class UnigramWordPredictor implements WordPredictor {
   public String predictNextWord(List<String> context) {
     // TODO: Return a predicted word given the words preceding it
     // Hint: only the last word in context should be looked at
-    return null;
+        String nextWord = "";
+        Random rand = new Random();
+
+        nextWord += context.get(rand.nextInt(context.size()));
+
+        return nextWord;
   }
   
   /**
