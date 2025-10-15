@@ -68,16 +68,21 @@ public class UnigramWordPredictor implements WordPredictor {
         trainingWordsQ.add(trainingWords.get(i));
     }
 
-    
+    //Begin iteration of training words
     for (String word : trainingWords) {
+        //Creates an object list that will store the existing list or null if absent
         List<String> predictedWord = neighborMap.get(word);
 
+        //If it is null, it will create a new key with the word and a new list value
         if(predictedWord == null){
             predictedWord = new ArrayList<>();
             neighborMap.put(word, predictedWord);
         }
+        //Current word in training will be removed
         trainingWordsQ.poll();
+        //Checks if the queue is at the end
         if(trainingWordsQ.peek() != null){
+            //adds the word at head of queue
             predictedWord.add(trainingWordsQ.peek());
         }
     }
