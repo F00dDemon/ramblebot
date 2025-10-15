@@ -1,7 +1,9 @@
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
+import java.util.Queue;
 import java.util.Scanner;
 
 /**
@@ -49,17 +51,39 @@ public class UnigramWordPredictor implements WordPredictor {
    * @param scanner the Scanner to read the training text from
    */
   public void train(Scanner scanner) {
-    List<String> trainingWords = tokenizer.tokenize(scanner);
-    Map<String, String> neightborMap = new HashMap<>();
+    // Create 2 lists, one to go through each word & one to check on the neighbor without index checking.
 
-    //if(!trainingWords.isEmpty()){
-      neightborMap.put(trainingWords.get(0), trainingWords.get(1));
-      for (String word : trainingWords) {
-        
-      }
-    //}
+    List<String> trainingWords = tokenizer.tokenize(scanner);
+    Queue<String> trainingWordsQ = new LinkedList();
+    Map<String, List<String>> neighborMap = new HashMap<>();
     
-    // TODO: Convert the trainingWords into neighborMap here
+    /*
+     * Skeleton of inputting strings withing a hashmap was found here:
+     * https://stackoverflow.com/a/3019388
+     * I've never done this so I had to do research.
+     */
+
+     //Iterate through the first list in order to prepare Queue for neighbor check.
+    for(int i = 0; i < trainingWords.size(); i++){
+        trainingWordsQ.add(trainingWords.get(i));
+    }
+
+    
+    for (String word : trainingWords) {
+        List<String> predictedWord = neighborMap.get(word);
+
+        if(predictedWord == null){
+            predictedWord = new ArrayList<>();
+            neighborMap.put(word, predictedWord);
+        }
+        trainingWordsQ.poll();
+        if(trainingWordsQ.peek() != null){
+            predictedWord.add(trainingWordsQ.peek());
+        }
+    }
+    System.out.println(neighborMap);
+
+    
   }
 
   /**
