@@ -51,9 +51,8 @@ public class UnigramWordPredictor implements WordPredictor {
    * @param scanner the Scanner to read the training text from
    */
   public void train(Scanner scanner) {
-    // Create 2 lists, one to go through each word & one to check on the neighbor without index checking.
-
     List<String> trainingWords = tokenizer.tokenize(scanner);
+    // Create 2 lists, one to go through each word & one to check on the neighbor without index checking.
     Queue<String> trainingWordsQ = new LinkedList();
     Map<String, List<String>> neighborMap = new HashMap<>();
     
@@ -86,9 +85,8 @@ public class UnigramWordPredictor implements WordPredictor {
             predictedWord.add(trainingWordsQ.peek());
         }
     }
-    System.out.println(neighborMap);
 
-    
+    this.neighborMap = neighborMap;
   }
 
   /**
