@@ -77,7 +77,6 @@ public class LowercaseSentenceTokenizer implements Tokenizer {
     if (!wordBuild.isEmpty()) {
       tokens.add(wordBuild);
     }
-    System.out.println(tokens);
     return tokens;
   }
 }
