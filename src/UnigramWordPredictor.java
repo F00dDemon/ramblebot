@@ -141,7 +141,6 @@ public class UnigramWordPredictor implements WordPredictor {
         Random rand = new Random();
 
         nextWord += context.get(rand.nextInt(context.size()));
-
         return nextWord;
   }
   
