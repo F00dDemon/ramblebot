@@ -85,33 +85,31 @@ class UnigramWordPredictorTest {
         predictor.train(null); // The scanner input is ignored by FakeTokenizer
         // Predicting the next word after "the" should be "quick" or "slow"
         String nextWord = predictor.predictNextWord(List.of("the"));
-        assertEquals(List.of("quick", "slow"), List.of("the"));
-        //assertEquals("slow", nextWord);
-        // assertTrue(nextWord.equals("quick") || nextWord.equals("slow"));
+        assertTrue(nextWord.equals("quick") || nextWord.equals("slow"));
         
-        // // Predicting the next word after "a" should be "quick"
-        // nextWord = predictor.predictNextWord(List.of("a"));
-        // assertEquals("quick", nextWord);
+        // Predicting the next word after "a" should be "quick"
+        nextWord = predictor.predictNextWord(List.of("a"));
+        assertEquals("quick", nextWord);
         
-        // // Predicting the next word after "quick" should be either "brown" or "red"
-        // nextWord = predictor.predictNextWord(List.of("quick"));
-        // assertTrue(nextWord.equals("brown") || nextWord.equals("red"));
+        // Predicting the next word after "quick" should be either "brown" or "red"
+        nextWord = predictor.predictNextWord(List.of("quick"));
+        assertTrue(nextWord.equals("brown") || nextWord.equals("red"));
         
-        // // Predicting the next word after "fox" should always be "."
-        // nextWord = predictor.predictNextWord(List.of("fox"));
-        // assertEquals(".", nextWord);
+        // Predicting the next word after "fox" should always be "."
+        nextWord = predictor.predictNextWord(List.of("fox"));
+        assertEquals(".", nextWord);
         
-        // // Predicting the next word after "slow" should always be "green"
-        // nextWord = predictor.predictNextWord(List.of("slow"));
-        // assertEquals("green", nextWord);
+        // Predicting the next word after "slow" should always be "green"
+        nextWord = predictor.predictNextWord(List.of("slow"));
+        assertEquals("green", nextWord);
         
-        // // Predicting the next word after "turtle" should always be "."
-        // nextWord = predictor.predictNextWord(List.of("turtle"));
-        // assertEquals(".", nextWord);
+        // Predicting the next word after "turtle" should always be "."
+        nextWord = predictor.predictNextWord(List.of("turtle"));
+        assertEquals(".", nextWord);
         
-        // // Predicting the next word after "." should be "the" or "a"
-        // nextWord = predictor.predictNextWord(List.of("."));
-        // assertTrue(nextWord.equals("the") || nextWord.equals("a"));
+        // Predicting the next word after "." should be "the" or "a"
+        nextWord = predictor.predictNextWord(List.of("."));
+        assertTrue(nextWord.equals("the") || nextWord.equals("a"));
     }
 
 

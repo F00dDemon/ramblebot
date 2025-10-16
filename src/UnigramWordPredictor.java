@@ -58,7 +58,7 @@ public class UnigramWordPredictor implements WordPredictor {
     Map<String, List<String>> neighborMap = new HashMap<>();
     
     /*
-     * Skeleton of inputting strings withing a hashmap was found here:
+     * Skeleton of inputting strings with a hashmap was found here:
      * https://stackoverflow.com/a/3019388
      * I've never done this so I had to do research.
      */
@@ -78,7 +78,7 @@ public class UnigramWordPredictor implements WordPredictor {
             predictedWord = new ArrayList<>();
             neighborMap.put(word, predictedWord);
         }
-        //Current word in training will be removed
+        //Current word in training will be removed from Queue
         trainingWordsQ.poll();
         //Checks if the queue is at the end
         if(trainingWordsQ.peek() != null){
